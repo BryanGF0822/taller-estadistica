@@ -25,7 +25,7 @@ namespace taller_estadistica_lista_y_grafico
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnAbrir_Click(object sender, RoutedEventArgs e)
         {
 
         }

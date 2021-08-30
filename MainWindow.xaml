@@ -6,8 +6,5 @@
         xmlns:local="clr-namespace:taller_estadistica_lista_y_grafico"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="btnAbrir">
-        <Button Content="Select File" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-
-    </Grid>
+    <Button x:Name="btnAbrir" Content="Abrir archivo" HorizontalAlignment="Left" Margin="87,59,0,0" VerticalAlignment="Top" Click="btnAbrir_Click"/>
 </Window>
