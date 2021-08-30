@@ -15,14 +15,14 @@
         <Button Content="Ver clasificacion por tipo de minucipio" HorizontalAlignment="Left" Margin="573,63,0,0" VerticalAlignment="Top"/>
 
         <Grid>
-        <ListView x:Name="ListViewPeople" Margin="35,154,35,38">
+        <ListView x:Name="ListViewDepartamentos" Margin="35,154,35,38">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Codigo Departamento" Width="180" DisplayMemberBinding="{Binding Path=CodeDepar}"/>
-                    <GridViewColumn Header="Codigo Municipio" Width="180" DisplayMemberBinding="{Binding Path=CodeMuni}"/>
-                    <GridViewColumn Header="Nombre Deartamento" Width="180" DisplayMemberBinding="{Binding Path=DepaName}"/>
-                    <GridViewColumn Header="Nombre Municipio" Width="155" DisplayMemberBinding="{Binding Path=MuniName}"/>
-                    <GridViewColumn Header="Tipo" Width="120" DisplayMemberBinding="{Binding Path=TypeMuni}"/>
+                        <GridViewColumn Header="Codigo Departamento" Width="180" DisplayMemberBinding="{Binding Path=CodeDepartamento}"/>
+                        <GridViewColumn Header="Codigo Municipio" Width="180" DisplayMemberBinding="{Binding Path=CodeMunicipio}"/>
+                        <GridViewColumn Header="Nombre Deartamento" Width="180" DisplayMemberBinding="{Binding Path=NameDepartamento}"/>
+                        <GridViewColumn Header="Nombre Municipio" Width="155" DisplayMemberBinding="{Binding Path=NameMunicipio}"/>
+                        <GridViewColumn Header="Tipo" Width="120" DisplayMemberBinding="{Binding Path=TypeMunicipio}"/>
                     </GridView>
             </ListView.View>
         </ListView>

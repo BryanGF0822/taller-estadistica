@@ -38,8 +38,15 @@ namespace taller_estadistica_lista_y_grafico
             {
                 fileSearch = openFileDialog.FileName;
 
+                ReadCSV(fileSearch);
+                ListViewDepartamentos.ItemsSource = ReadCSV(fileSearch);
+
             }
-               
+
+        }
+        private void btnEjecutarFiltro_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void btnBorrarFiltro_Click(object sender, RoutedEventArgs e)
@@ -47,32 +54,41 @@ namespace taller_estadistica_lista_y_grafico
 
         }
 
-        private void btnEjecutarFiltro_Click(object sender, RoutedEventArgs e)
+        private static IEnumerable<Departamento> ReadCSV(string fileName)
         {
+            // We change file extension here to make sure it's a .csv file.
+            // TODO: Error checking.
+            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension(fileName, ".csv"));
 
+            // lines.Select allows me to project each line as a Person. 
+            // This will give me an IEnumerable<Departamento> back.
+            return lines.Select(line =>
+            {
+                string[] data = line.Split(',');
+
+                // We return a person with the data in order.
+                return new Departamento(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], data[3], data[4]);
+            });
         }
 
-        private void readerFile(String fileSearch)
+        public class Departamento
         {
-            string[] tokens;
-            char[] separators = { ';' };
-            string str = "";
+            public int CodeDepartamento { get; set; }
+            public int CodeMunicipio { get; set; }
+            public string NameDepartamento { get; set; }
+            public string NameMunicipio { get; set; }
+            public string TypeMunicipio { get; set; }
 
-            FileStream fs = new FileStream(@"D:\Dokumenter\Skole\6. semester\GUI\Exercises\Exercise2\02 deltagerliste.csv",
-                                           FileMode.Open);
-            StreamReader sr = new StreamReader(fs, Encoding.Default);
 
-            while ((str = sr.ReadLine()) != null)
+            public Departamento(int codeDepa, int codeMuni, string nameDepa, string nameMuni, string typeMuni)
             {
-                tokens = str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-                Console.WriteLine(String.Format("{0,-20}", tokens[0]) +
-                                  String.Format("{0,-15}", tokens[1]) +
-                                  String.Format("{0,-15}", tokens[2]) +
-                                  String.Format("{0,-15}", tokens[3]));
+                CodeDepartamento = codeDepa;
+                CodeMunicipio = codeMuni;
+                NameDepartamento = nameDepa;
+                NameMunicipio = nameMuni;
+                TypeMunicipio = typeMuni;
             }
-
-            Console.ReadLine();
         }
     }
 }
