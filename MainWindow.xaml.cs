@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace taller_estadistica_lista_y_grafico
 {
     /// <summary>
@@ -26,6 +28,21 @@ namespace taller_estadistica_lista_y_grafico
         }
 
         private void btnAbrir_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+
+            }
+               
+        }
+
+        private void btnBorrarFiltro_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEjecutarFiltro_Click(object sender, RoutedEventArgs e)
         {
 
         }

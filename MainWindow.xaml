@@ -5,6 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:taller_estadistica_lista_y_grafico"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Button x:Name="btnAbrir" Content="Abrir archivo" HorizontalAlignment="Left" Margin="87,59,0,0" VerticalAlignment="Top" Click="btnAbrir_Click"/>
+        Title="MainWindow" Height="600" Width="912">
+    <Grid Margin="10">
+        <Button x:Name="btnAbrir" Content="IMPORTAR ARCHIVO" HorizontalAlignment="Left" Margin="42,30,0,0" VerticalAlignment="Top" Click="btnAbrir_Click"/>
+        <Label Content="Seleccionar el departamento que desea filtrar" HorizontalAlignment="Left" Margin="42,78,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <ComboBox x:Name="comboBoxDepartamento" HorizontalAlignment="Left" Margin="43,109,0,0" VerticalAlignment="Top" Width="192"/>
+        <Button x:Name="btnEjecutarFiltro" Content="Ejecutar filtro" HorizontalAlignment="Left" Margin="263,110,0,0" VerticalAlignment="Top" Click="btnEjecutarFiltro_Click"/>
+        <Button x:Name="btnBorrarFiltro" Content="Borrar filtro" HorizontalAlignment="Left" Margin="359,110,0,0" VerticalAlignment="Top" Click="btnBorrarFiltro_Click"/>
+        <Button Content="Ver clasificacion por tipo de minucipio" HorizontalAlignment="Left" Margin="573,63,0,0" VerticalAlignment="Top"/>
+
+        <Grid>
+            <FlowDocumentReader>
+                
+            </FlowDocumentReader>
+        </Grid>
+    </Grid>
+
 </Window>
