@@ -15,17 +15,15 @@
         <Button Content="Ver clasificacion por tipo de minucipio" HorizontalAlignment="Left" Margin="573,63,0,0" VerticalAlignment="Top"/>
 
         <Grid>
-        <ListView x:Name="ListViewDepartamentos" Margin="35,154,35,38">
-            <ListView.View>
-                <GridView>
-                        <GridViewColumn Header="Codigo Departamento" Width="180" DisplayMemberBinding="{Binding Path=CodeDepartamento}"/>
-                        <GridViewColumn Header="Codigo Municipio" Width="180" DisplayMemberBinding="{Binding Path=CodeMunicipio}"/>
-                        <GridViewColumn Header="Nombre Deartamento" Width="180" DisplayMemberBinding="{Binding Path=NameDepartamento}"/>
-                        <GridViewColumn Header="Nombre Municipio" Width="155" DisplayMemberBinding="{Binding Path=NameMunicipio}"/>
-                        <GridViewColumn Header="Tipo" Width="120" DisplayMemberBinding="{Binding Path=TypeMunicipio}"/>
-                    </GridView>
-            </ListView.View>
-        </ListView>
+            <DataGrid x:Name="ListTableDepa" Margin="32,170,32,30">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Código Departamento" Binding="{Binding codeDepartamento}" Width="80"/>
+                    <DataGridTextColumn Header="Código Municipio" Binding="{Binding codeMunicipio}" Width="80"/>
+                    <DataGridTextColumn Header="Nombre Departamento" Binding="{Binding nameDepartamento}" Width="*"/>
+                    <DataGridTextColumn Header="Nombre Municipio" Binding="{Binding nameMunicipio}" Width="*"/>
+                    <DataGridTextColumn Header="Tipo Municipio" Binding="{Binding typeMunicipio}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 

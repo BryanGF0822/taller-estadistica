@@ -23,9 +23,14 @@ namespace taller_estadistica_lista_y_grafico
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<Departamento> depas { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+
+            depas = new List<Departamento>();
+            String[] comboBoxList = new[] {""};
         }
 
         private void btnAbrir_Click(object sender, RoutedEventArgs e)
@@ -37,9 +42,8 @@ namespace taller_estadistica_lista_y_grafico
             if (openFileDialog.ShowDialog() == true)
             {
                 fileSearch = openFileDialog.FileName;
-
-                ReadCSV(fileSearch);
-                ListViewDepartamentos.ItemsSource = ReadCSV(fileSearch);
+                ListTableDepa.Items.Clear();
+                readCSV(fileSearch);
 
             }
 
@@ -51,44 +55,35 @@ namespace taller_estadistica_lista_y_grafico
 
         private void btnBorrarFiltro_Click(object sender, RoutedEventArgs e)
         {
-
+            ListTableDepa.Items.Clear();
         }
-
-        private static IEnumerable<Departamento> ReadCSV(string fileName)
+       
+        private void readCSV(String fileName)
         {
-            // We change file extension here to make sure it's a .csv file.
-            // TODO: Error checking.
-            string[] lines = File.ReadAllLines(System.IO.Path.ChangeExtension(fileName, ".csv"));
+            String[] rows = File.ReadAllLines(fileName);
 
-            // lines.Select allows me to project each line as a Person. 
-            // This will give me an IEnumerable<Departamento> back.
-            return lines.Select(line =>
+            foreach(String line in rows)
             {
-                string[] data = line.Split(',');
+                String[] datos = line.Split(',');
 
-                // We return a person with the data in order.
-                return new Departamento(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], data[3], data[4]);
-            });
+                int aux;
+                if(int.TryParse(datos[0], out aux))
+                {
+                    Departamento dep = new Departamento() { codeDepartamento = datos[0], codeMunicipio = datos[1], nameDepartamento = datos[2], nameMunicipio = datos[3], typeMunicipio = datos[4] };
+                    depas.Add(dep);
+                    ListTableDepa.Items.Add(dep);
+                }
+            }
         }
 
         public class Departamento
         {
-            public int CodeDepartamento { get; set; }
-            public int CodeMunicipio { get; set; }
-            public string NameDepartamento { get; set; }
-            public string NameMunicipio { get; set; }
-            public string TypeMunicipio { get; set; }
+            public String codeDepartamento { get; set; }
+            public String codeMunicipio { get; set; }
+            public String nameDepartamento { get; set; }
+            public String nameMunicipio { get; set; }
+            public String typeMunicipio { get; set; }
 
-
-            public Departamento(int codeDepa, int codeMuni, string nameDepa, string nameMuni, string typeMuni)
-            {
-
-                CodeDepartamento = codeDepa;
-                CodeMunicipio = codeMuni;
-                NameDepartamento = nameDepa;
-                NameMunicipio = nameMuni;
-                TypeMunicipio = typeMuni;
-            }
         }
     }
 }
