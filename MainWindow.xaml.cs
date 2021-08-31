@@ -30,7 +30,10 @@ namespace taller_estadistica_lista_y_grafico
             InitializeComponent();
 
             depas = new List<Departamento>();
-            String[] comboBoxList = new[] {""};
+            String[] comboBoxList = new[] {"Amazonas", "Antioquia", "Arauca", "Atlantico", "Bogota", "Bolivar", "Boyaca", "Caldas", "Caqueta", "Casanare", "Cauca", "Cesar",
+            "Choco", "Cordoba", "Cundinamarca", "Guainia", "Guaviare", "huila", "Guajira", "Magdalena", "Meta", "Narino", "Norte de santander", "Putumayo", "Quindio", "Risaralda",
+            "San Andres", "Santander", "Sucre", "Tolima", "Valle del cauca", "Vaupés", "Vichada"};
+            comboBoxDepartamento.ItemsSource = comboBoxList;
         }
 
         private void btnAbrir_Click(object sender, RoutedEventArgs e)
