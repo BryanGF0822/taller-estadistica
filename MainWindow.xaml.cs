@@ -16,8 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace taller_estadistica_lista_y_grafico
-{
+namespace taller_estadistica_lista_y_grafico{
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,14 +24,15 @@ namespace taller_estadistica_lista_y_grafico
     {
 
         public List<Departamento> depas { get; set; }
+        
         public MainWindow()
         {
             InitializeComponent();
 
             depas = new List<Departamento>();
-            String[] comboBoxList = new[] {"Amazonas", "Antioquia", "Arauca", "Atlantico", "Bogota", "Bolivar", "Boyaca", "Caldas", "Caqueta", "Casanare", "Cauca", "Cesar",
-            "Choco", "Cordoba", "Cundinamarca", "Guainia", "Guaviare", "huila", "Guajira", "Magdalena", "Meta", "Narino", "Norte de santander", "Putumayo", "Quindio", "Risaralda",
-            "San Andres", "Santander", "Sucre", "Tolima", "Valle del cauca", "Vaupés", "Vichada"};
+            String[] comboBoxList = new[] {"ANTIOQUIA", "ATLANTICO", "BOGOTA", "BOLIVAR", "BOYACA", "CAUCA", "CALDAS", "CAQUETA", "CESAR", "CORDOBA", "CUNDINAMARCA", "CHOCO", "HUILA",
+                "LA GUAJIRA", "MAGDALENA", "META", "NARIÑO", "NORTE DE SANTANDER", "QUINDIO", "RISARALDA", "SANTANDER", "SUCRE", "TOLIMA", "VALLE DEL CAUCA", "CASANARE", "ARAUCA",
+                "PUTUMAYO", "ARCHIPIELAGO DE SAN ANDRES. PROVIDENCIA Y SANTA CATALINA", "AMAZONAS", "GUAINIA", "VAUPES", "GUAVIARE", "VICHADA" };
             comboBoxDepartamento.ItemsSource = comboBoxList;
         }
 
@@ -53,7 +53,34 @@ namespace taller_estadistica_lista_y_grafico
         }
         private void btnEjecutarFiltro_Click(object sender, RoutedEventArgs e)
         {
+            String selected = comboBoxDepartamento.SelectedItem.ToString();
+            
+            cargar(filtroPorDepas(selected));
+        }
 
+        private void cargar(List<Departamento> filtro)
+        {
+            ListTableDepa.Items.Clear();
+            foreach(Departamento d in filtro)
+            {
+                ListTableDepa.Items.Add(d);
+            }
+        }
+
+        private List<Departamento> filtroPorDepas(String depar)
+        {
+            List<Departamento> filtroPorDepas = new List<Departamento>();
+
+            foreach (Departamento d in depas)
+            {
+                if (d.nameDepartamento.Equals(depar))
+                {
+                    filtroPorDepas.Add(d);
+                }
+                Console.WriteLine(filtroPorDepas);
+            }
+
+            return filtroPorDepas;
         }
 
         private void btnBorrarFiltro_Click(object sender, RoutedEventArgs e)
